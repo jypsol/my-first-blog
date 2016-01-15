@@ -1,0 +1,100 @@
+
+Volver el campo last_login en valor por defecto null desde phpMyAdmin
+
+
+CREATE TABLE django_session (
+	session_key varchar(40) NOT NULL PRIMARY KEY,
+	session_data text NOT NULL,
+	expire_date datetime NOT NULL)
+
+CREATE TABLE django_admin_log (
+    id integer NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    object_id text NULL,
+    object_repr varchar(200) NOT NULL,
+    action_flag smallint unsigned NOT NULL,
+    change_message text NOT NULL,
+    content_type_id integer NULL REFERENCES django_content_type (id),
+    user_id integer NOT NULL REFERENCES auth_user (id),
+    action_time datetime NOT NULL)
+
+
+
+
+
+
+
+
+
+
+
+
+- phpMyAdmin SQL Dump
+-- version 4.2.11
+-- http://www.phpmyadmin.net
+--
+-- Host: 127.0.0.1
+-- Generation Time: Jan 14, 2016 at 09:13 
+-- Server version: 5.6.21
+-- PHP Version: 5.6.3
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `pruebadjango`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `django_admin_log`
+--
+
+CREATE TABLE IF NOT EXISTS `django_admin_log` (
+`id` int(11) NOT NULL,
+  `object_id` text,
+  `object_repr` varchar(200) NOT NULL,
+  `action_flag` smallint(5) unsigned NOT NULL,
+  `change_message` text NOT NULL,
+  `content_type_id` int(11) DEFAULT NULL,
+  `user_id` int(11) NOT NULL,
+  `action_time` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `django_admin_log`
+--
+
+INSERT INTO `django_admin_log` (`id`, `object_id`, `object_repr`, `action_flag`, `change_message`, `content_type_id`, `user_id`, `action_time`) VALUES
+(1, '1', 'Post1', 1, 'Added.', 7, 1, '2016-01-14 17:08:50'),
+(2, '1', 'Post1', 2, 'Changed text.', 7, 1, '2016-01-14 17:11:11');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `django_admin_log`
+--
+ALTER TABLE `django_admin_log`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `django_admin_log`
+--
+ALTER TABLE `django_admin_log`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
