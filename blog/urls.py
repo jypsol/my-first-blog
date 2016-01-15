@@ -1,6 +1,6 @@
-from django.conf.urls import include, url
-from blog.views import archive
+from django.conf.urls import url
+from . import views
 
-    urlpatterns = patterns('',
-        url(r'^$', archive),
-    )
+urlpatterns = [
+        url(r'^$', views.post_list),
+]
